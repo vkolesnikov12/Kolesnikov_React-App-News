@@ -1,0 +1,20 @@
+[
+  {
+      "id": 1,
+      "title": "asda",
+      "content": "qweqwewq",
+      "createdAt": "2024-05-03T12:39:46.724Z",
+      "tags": [
+          {
+              "id": 1,
+              "name": "test"
+          }
+      ],
+      "author": {
+          "id": 1,
+          "login": "vitalik",
+          "avatarUrl": null,
+          "createdAt": "2024-05-03T12:39:46.680Z"
+      }
+  }
+]
