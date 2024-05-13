@@ -1,14 +1,38 @@
+import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
-import data from "../components/data.json"
+
+interface Tag {
+  id: number;
+  name: string;
+}
+
+interface Author {
+  id: number;
+  login: string;
+  avatarUrl: string | null;
+  createdAt: string;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: string;
+  tags: Tag[];
+  author: Author;
+}
+
 const MainPage = () => {
-  const posts = data;
+  
+  const defaultState = useSelector((state: Post[]) => state)
+  console.log(defaultState);
+  
   return (
     <div>
-    {posts.map(post => (
+    {defaultState.map(post => (
       <PostCard key={post.id} post={post} />
     ))}
   </div>
   );
 }
 export default MainPage
-

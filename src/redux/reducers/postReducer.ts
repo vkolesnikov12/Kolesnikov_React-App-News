@@ -1,4 +1,6 @@
-[
+import { Action } from "redux";
+
+const defaultState = [
   {
       "id": 1,
       "title": "Заголовок поста",
@@ -18,3 +20,11 @@
       }
   }
 ]
+const rootReducer = (state = defaultState, action: Action) => {
+  switch (action.type) {
+    default: 
+      return state
+  }
+}
+
+export default rootReducer;
