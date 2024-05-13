@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
-import data from './data.json';
 
 interface Tag {
   id: number;
@@ -22,39 +21,39 @@ interface Post {
   tags: Tag[];
   author: Author;
 }
-
-const PostCard: React.FC = () => {
+interface Props {
+  post: Post
+}
+const PostCard: React.FC<Props> = ({post}) => {
   return (
     <div>
-      {data.map((post: Post) => (
-        <Card key={post.id} sx={{ maxWidth: 345, marginBottom: 2 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="300"
-              image={'https://img.freepik.com/premium-vector/empty-face-icon-avatar-with-nimbus-vector-illustration_601298-13388.jpg'}
-              alt={post.author.login}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {post.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {post.content}
-              </Typography>
-              <Typography variant="caption" component="div" sx={{marginTop: 2}} color="text.secondary">
-                {post.createdAt}
-              </Typography><br />
-              <Typography variant="caption" color="text.secondary">
-                Автор: {post.author.login}
-              </Typography><br />
-              <Typography variant="caption" color="text.secondary">
-                {post.tags.map(tag => tag.name).join(', ')}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
+      <Card key={post.id} sx={{ maxWidth: 345, marginBottom: 2 }}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="300"
+            image={'https://img.freepik.com/premium-vector/empty-face-icon-avatar-with-nimbus-vector-illustration_601298-13388.jpg'}
+            alt={post.author.login}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {post.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {post.content}
+            </Typography>
+            <Typography variant="caption" component="div" sx={{marginTop: 2}} color="text.secondary">
+              {post.createdAt}
+            </Typography><br />
+            <Typography variant="caption" color="text.secondary">
+              Автор: {post.author.login}
+            </Typography><br />
+            <Typography variant="caption" color="text.secondary">
+              {post.tags.map(tag => tag.name).join(', ')}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     </div>
   );
 };

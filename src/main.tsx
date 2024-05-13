@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import PostCart from './components/PostCard'
+import MainPage from './pages/MainPage'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <PostCart/>
+    <MainPage/>
   </React.StrictMode>,
 )
