@@ -1,7 +1,10 @@
-import { createStore } from "redux";
-import postReducer from "./reducers/postReducer"
+import { createStore } from 'redux';
 
+import rootReducer from './reducers/rootReducer';
 
-const store = createStore(postReducer);
+const store = createStore(rootReducer);
 
 export default store;
+
+export type AppStore = typeof store
+export type RootState = ReturnType<AppStore['getState']>

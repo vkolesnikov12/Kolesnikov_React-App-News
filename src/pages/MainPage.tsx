@@ -1,5 +1,7 @@
-import { useSelector } from "react-redux";
-import PostCard from "../components/PostCard";
+import { useSelector } from 'react-redux';
+
+import PostCard from '../components/PostCard';
+import { RootState } from '../redux/store';
 
 interface Tag {
   id: number;
@@ -24,15 +26,15 @@ interface Post {
 
 const MainPage = () => {
   
-  const defaultState = useSelector((state: Post[]) => state)
+  const defaultState = useSelector((state: RootState) => state.posts);
   console.log(defaultState);
   
   return (
     <div>
-    {defaultState.map(post => (
+    {defaultState.map((post: Post) => (
       <PostCard key={post.id} post={post} />
     ))}
   </div>
   );
-}
-export default MainPage
+};
+export default MainPage;

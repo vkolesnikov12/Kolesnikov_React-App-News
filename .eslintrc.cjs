@@ -14,5 +14,19 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "semi": ["error"],
+    "quotes": ["error", "single"],
+    "no-extra-semi": "off",
+    "no-console": "off",
+    "no-use-before-define": ["error", {
+      "functions": false,
+      "classes": true,
+      "variables": false,
+      "allowNamedExports": false
+  }],
+  "radix": ["error", "as-needed"],
+  "no-param-reassign": ["off"],
+  "no-shadow": ["error", { "ignoreOnInitialization": false }],
+  "prefer-destructuring": ["error", {"object": true, "array": false}]
   },
 }

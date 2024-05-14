@@ -1,11 +1,9 @@
-import MainPage from "./pages/MainPage"
+import MainPage from './pages/MainPage';
 
-const App = () => {
-  return (
-    <div>
-       <MainPage/>
-    </div>
-  )
-}
+const App: React.FC = () => (
+  <div>
+    <MainPage />
+  </div>
+);
 
 export default App;
