@@ -1,25 +1,6 @@
 import { Action } from 'redux';
 
-interface Tag {
-  id: number;
-  name: string;
-}
-
-interface Author {
-  id: number;
-  login: string;
-  avatarUrl: string | null;
-  createdAt: string;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  createdAt: string;
-  tags: Tag[];
-  author: Author;
-}
+import { Post } from '../../types';
 
 const defaultState: Post[] = [
   {

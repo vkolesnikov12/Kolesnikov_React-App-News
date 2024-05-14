@@ -1,26 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
 
-interface Tag {
-  id: number;
-  name: string;
-}
-
-interface Author {
-  id: number;
-  login: string;
-  avatarUrl: string | null;
-  createdAt: string;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  createdAt: string;
-  tags: Tag[];
-  author: Author;
-}
+import { Post } from '../types';
 interface Props {
   post: Post
 }
