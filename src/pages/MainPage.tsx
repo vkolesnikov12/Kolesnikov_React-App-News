@@ -6,11 +6,12 @@ import { Post } from '../types';
 
 const MainPage = () => {
   
-  const defaultState = useSelector((state: RootState) => state.posts);
+  const defaultState = useSelector((state: RootState) => state.news);
+  console.log(defaultState.news);
   
   return (
     <>
-    {defaultState.map((post: Post) => (
+    {defaultState.news.map((post: Post) => (
       <PostCard key={post.id} post={post} />
     ))}
   </>
