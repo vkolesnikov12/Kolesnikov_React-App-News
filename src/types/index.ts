@@ -21,6 +21,12 @@ export interface Post {
   author: Author;
 }
 
+export interface DefaultState {
+  news: Post[],
+  isLoading: boolean,
+  error: null | string,
+}
+
 export interface NewsRequestedAction {
   type: typeof NEWS_REQUESTED;
 }
@@ -35,3 +41,4 @@ export interface NewsFailedAction {
 }
 
 export type PostAction = NewsRequestedAction | NewsReceivedAction | NewsFailedAction;
+
