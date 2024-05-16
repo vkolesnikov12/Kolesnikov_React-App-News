@@ -1,6 +1,6 @@
-import { Post } from '../../types';
 import { NEWS_FAILED, NEWS_RECEIVED, NEWS_REQUESTED } from '../constants/actionTypes';
 
+import { Post } from '../../types';
 
 export const newsRequested = () => ({
   type: NEWS_REQUESTED,

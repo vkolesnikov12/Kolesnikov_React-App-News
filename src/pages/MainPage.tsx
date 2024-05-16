@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import PostCard from '../components/PostCard';
 import { RootState } from '../redux/store';
 import { newsRequested } from '../redux/actions/newsActions';
+
 const MainPage = () => {
   
   const dispatch = useDispatch(); 
@@ -16,9 +17,17 @@ const MainPage = () => {
   return (
     <>
     {news.map((post) => (
-      <PostCard key={post.id} post={post} />
+      <PostCard 
+      id={post.id}
+      title={post.title}
+      content={post.content}
+      createdAt={post.createdAt}
+      authorLogin={post.author.login}
+      tags={post.tags.map(tag => tag.name)}
+      />
     ))}
   </>
   );
 };
+
 export default MainPage;

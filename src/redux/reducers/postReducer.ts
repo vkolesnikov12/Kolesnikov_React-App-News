@@ -1,4 +1,5 @@
 import { NEWS_FAILED, NEWS_RECEIVED, NEWS_REQUESTED } from '../constants/actionTypes';
+
 import { DefaultState, PostAction } from '../../types';
 
 const defaultState: DefaultState = {
