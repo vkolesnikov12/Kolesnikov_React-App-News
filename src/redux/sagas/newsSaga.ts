@@ -1,19 +1,26 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, call, takeLatest } from 'redux-saga/effects';
 
-import { NEWS_RECEIVED } from '../constants/actionTypes';
+import { NEWS_REQUESTED } from '../constants/actionTypes';
 import { postsData } from '../api/post';
-import { Post } from '../../types';
+import { newsFailed, newsReceived } from '../actions/newsActions';
 
 function* workSaga() {
   try {
-    const data: Post[] = yield postsData();
-    yield put({type: NEWS_RECEIVED, payload: data});
-  } catch (error) {
-    console.error(error);
+    const { data } = yield call(postsData);
+    yield put(newsReceived(data));
+  } catch (error: unknown) {
+    if(error instanceof Error){
+      yield put(newsFailed(error.message));
+    } else {
+      const defaultError = new Error('unknown error');
+      yield put(newsFailed(defaultError.message));
+    }
   }
 }
 
+
+
 function* watchSaga() {
-  yield takeEvery('GET_POST', workSaga);
+  yield takeLatest(NEWS_REQUESTED, workSaga);
 }
 export default watchSaga;

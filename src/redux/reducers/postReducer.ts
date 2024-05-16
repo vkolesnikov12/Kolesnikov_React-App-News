@@ -1,7 +1,7 @@
 import { NEWS_FAILED, NEWS_RECEIVED, NEWS_REQUESTED } from '../constants/actionTypes';
-import { PostAction } from '../../types';
+import { DefaultState, PostAction } from '../../types';
 
-const defaultState = {
+const defaultState: DefaultState = {
   news: [],
   isLoading: false,
   error: null,

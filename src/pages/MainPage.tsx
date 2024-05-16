@@ -3,21 +3,19 @@ import { useEffect } from 'react';
 
 import PostCard from '../components/PostCard';
 import { RootState } from '../redux/store';
-import { Post } from '../types';
-
+import { newsRequested } from '../redux/actions/newsActions';
 const MainPage = () => {
   
-  const defaultState = useSelector((state: RootState) => state.news);
   const dispatch = useDispatch(); 
-  console.log(defaultState.news);
+  const news = useSelector((state: RootState) => state.posts.news);
 
   useEffect(() => {
-    dispatch({ type: 'GET_POST' });
+    dispatch(newsRequested());
   }, []);
 
   return (
     <>
-    {defaultState.news.map((post: Post) => (
+    {news.map((post) => (
       <PostCard key={post.id} post={post} />
     ))}
   </>
