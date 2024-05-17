@@ -37,7 +37,7 @@ const MainPage = () => {
         authorLogin={post.author.login}
         tags={post.tags.map(tag => tag.name)}
       />
-    ))};
+    ))}
   </>
   );
 };
