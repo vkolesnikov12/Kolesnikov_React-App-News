@@ -6,6 +6,6 @@ function* rootSaga() {
   yield all([
     watchSaga(),
   ]);
-}
+};
 
 export default rootSaga;

@@ -18,7 +18,7 @@ const postReducer = (state = defaultState, action: PostAction) => {
       return {...state, isLoading: false, news: [], error: action.error};
     default: 
       return state;
-  }
+  };
 };
 
 export default postReducer;

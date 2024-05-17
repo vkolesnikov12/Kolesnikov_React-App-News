@@ -1,12 +1,10 @@
 import { legacy_createStore as createStore, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import { useDispatch } from 'react-redux';
 
 import rootReducer from './reducers/rootReducer';
 import rootSaga from './sagas/rootSagas';
-import { useDispatch } from 'react-redux';
-
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -1,17 +1,17 @@
 import { NEWS_FAILED, NEWS_RECEIVED, NEWS_REQUESTED } from '../constants/actionTypes';
 
-import { Post } from '../../types';
+import { NewsFailedAction, NewsReceivedAction, NewsRequestedAction } from '../../types';
 
-export const newsRequested = () => ({
+export const newsRequested = (): NewsRequestedAction => ({
   type: NEWS_REQUESTED,
 });
 
-export const newsReceived = (payload: Post[]) => ({
+export const newsReceived = (payload: NewsReceivedAction) => ({
   type: NEWS_RECEIVED,
   payload,
 });
 
-export const newsFailed = (error: string | null) => ({
+export const newsFailed = (error: NewsFailedAction) => ({
   type: NEWS_FAILED,
   error,
 });

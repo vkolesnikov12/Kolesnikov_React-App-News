@@ -14,13 +14,11 @@ function* workSaga() {
     } else {
       const defaultError = new Error('unknown error');
       yield put(newsFailed(defaultError.message));
-    }
-  }
-}
-
-
+    };
+  };
+};
 
 function* watchSaga() {
   yield takeLatest(NEWS_REQUESTED, workSaga);
-}
+};
 export default watchSaga;

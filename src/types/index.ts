@@ -3,14 +3,14 @@ import { NEWS_FAILED, NEWS_RECEIVED, NEWS_REQUESTED } from '../redux/constants/a
 export interface Tag {
   id: number;
   name: string;
-}
+};
 
 export interface Author {
   id: number;
   login: string;
   avatarUrl: string | null;
   createdAt: string;
-}
+};
 
 export interface Post {
   id: number;
@@ -19,26 +19,26 @@ export interface Post {
   createdAt: string;
   tags: Tag[];
   author: Author;
-}
+};
 
 export interface DefaultState {
   news: Post[],
   isLoading: boolean,
   error: null | string,
-}
+};
 
 export interface NewsRequestedAction {
   type: typeof NEWS_REQUESTED;
-}
+};
 export interface NewsReceivedAction {
   type: typeof NEWS_RECEIVED;
   payload: Post[];
-}
+};
 
 export interface NewsFailedAction {
   type: typeof NEWS_FAILED;
-  error: string;
-}
+  error: string | null;
+};
 
 export type PostAction = NewsRequestedAction | NewsReceivedAction | NewsFailedAction;
 
