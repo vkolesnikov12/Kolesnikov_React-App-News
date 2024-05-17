@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
 
 interface Props {
-  id: number,
+  id?: number,
   title: string;
   content: string;
   createdAt: string;

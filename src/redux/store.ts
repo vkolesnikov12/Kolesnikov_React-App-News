@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers/rootReducer';
 import rootSaga from './sagas/rootSagas';
+import { useDispatch } from 'react-redux';
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -17,5 +18,7 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 export default store;
 
-export type AppStore = typeof store
-export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = typeof store.dispatch;
+export type AppStore = typeof store;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export type RootState = ReturnType<AppStore['getState']>;

@@ -11,7 +11,7 @@ export const newsReceived = (payload: Post[]) => ({
   payload,
 });
 
-export const newsFailed = (error: string) => ({
+export const newsFailed = (error: string | null) => ({
   type: NEWS_FAILED,
   error,
 });
