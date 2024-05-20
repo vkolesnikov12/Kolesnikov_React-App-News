@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
-import PostCard from '../components/PostCard';
-import Loading from '../components/Loading';
+import PostCard from '../components/PostCard/PostCard';
+import Loading from '../components/Loading/Loading';
 import { newsRequested } from '../redux/actions/newsActions';
 import { useAppSelector, useAppDispatch } from '../hooks';
-import FilledAlerts from '../components/FilledAlert';
+import FilledAlerts from '../components/FilledAlert/FilledAlert';
 import { Post } from '../types';
 
 const MainPage = () => {

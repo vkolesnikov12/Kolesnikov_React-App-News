@@ -1,14 +1,18 @@
 import Alert, { AlertColor } from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
-interface Props {
+interface FilledAlertProps {
  error: null | string;
  severity: AlertColor; 
 }
 
-const FilledAlerts: React.FC<Props> = ({error, severity}) =>  {
+const stackStyles = {
+  width: '100%'
+};
+
+const FilledAlerts = ({error, severity} :FilledAlertProps) =>  {
   return (
-    <Stack sx={{ width: '100%' }} spacing={2}>
+    <Stack sx={stackStyles} spacing={2}>
       <Alert variant="filled" severity={severity}>
         {error}
       </Alert>
