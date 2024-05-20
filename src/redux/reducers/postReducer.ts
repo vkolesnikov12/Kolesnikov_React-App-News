@@ -1,20 +1,20 @@
-import { NEWS_FAILED, NEWS_RECEIVED, NEWS_REQUESTED } from '../constants/actionTypes';
-import { DefaultState, PostAction } from '../../types';
+import { POSTS_FAILED, POSTS_RECEIVED, POSTS_REQUESTED } from '../constants/actionTypes';
+import { InitialState, PostAction } from '../../types';
 
-const defaultState: DefaultState = {
-  news: [],
+const initialState: InitialState = {
+  posts: [],
   isLoading: false,
   error: null,
 };
 
-const postReducer = (state = defaultState, action: PostAction) => {
+const postReducer = (state = initialState, action: PostAction) => {
   switch (action.type) {
-    case NEWS_REQUESTED:
+    case POSTS_REQUESTED:
       return {...state, isLoading: true, error: null};
-    case NEWS_RECEIVED:
-      return {...state, isLoading: false, news: action.payload, error: null};
-    case NEWS_FAILED:
-      return {...state, isLoading: false, news: [], error: action.error};
+    case POSTS_RECEIVED:
+      return {...state, isLoading: false, posts: action.payload, error: null};
+    case POSTS_FAILED:
+      return {...state, isLoading: false, posts: [], error: action.error};
     default: 
       return state;
   };

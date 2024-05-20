@@ -2,40 +2,37 @@ import { useEffect } from 'react';
 
 import PostCard from '../components/PostCard/PostCard';
 import Loading from '../components/Loading/Loading';
-import { newsRequested } from '../redux/actions/newsActions';
+import {  postsRequested } from '../redux/actions/postsActions';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import FilledAlerts from '../components/FilledAlert/FilledAlert';
-import { Post } from '../types';
+import { ERROR_SEVERITY, INFO_SEVERITY, NO_POSTS_MESSAGE } from '../redux/constants/constants';
 
 const MainPage = () => {
-  
   const dispatch = useAppDispatch();
-  
-  const news = useAppSelector((state) => state.posts.news);
+  const posts = useAppSelector((state) => state.posts.posts);
   const isLoading = useAppSelector((state) => state.posts.isLoading);
   const error = useAppSelector((state) => state.posts.error);
-  const notEmpty = news.length === 0 && !isLoading && !error;
+  const isError = error !== null && error !== undefined;
+  const isEmpty = posts.length === 0 && !isLoading && !isError;
   
   useEffect(() => {
-    dispatch(newsRequested());
+    dispatch(postsRequested());
   }, []);
 
-  if(isLoading) return <Loading/>;
+  if(isLoading) return <Loading />;
 
   return (
     <>
-    {error && (<FilledAlerts
-      error={error} severity='error'
-    />)}
-    {notEmpty && <FilledAlerts error="No post found" severity="info"/>}
-    {!error && news.map((post: Post) => (
+    {isError && (<FilledAlerts error={error} severity={ERROR_SEVERITY} />)}
+    {isEmpty && <FilledAlerts error={NO_POSTS_MESSAGE} severity={INFO_SEVERITY} />}
+    {!isError && posts.map((post) => (
       <PostCard 
         key={post.id}
         title={post.title}
         content={post.content}
         createdAt={post.createdAt}
         authorLogin={post.author.login}
-        tags={post.tags.map(tag => tag.name)}
+        tags={post.tags}
       />
     ))}
   </>

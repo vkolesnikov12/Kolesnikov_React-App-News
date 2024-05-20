@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
 
-import watchSaga from './newsSaga';
+import watchSaga from './postsSaga';
 
 function* rootSaga() {
   yield all([

@@ -1,24 +1,34 @@
-import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
+import { 
+  Card,
+  CardContent,
+  CardMedia, 
+  Typography, 
+  CardActionArea 
+} from '@mui/material';
+
+import { Tag } from '../../types';
 
 interface PostCardProps {
-  id?: number,
   title: string;
   content: string;
   createdAt: string;
   authorLogin: string;
-  tags: string[];
-}
-const stylesCard = { maxWidth: 345, marginBottom: 2 };
+  tags: Tag[];
+};
 
-const PostCard = ({title, content, createdAt, authorLogin, tags, id }: PostCardProps) => {
+const imageUrl = 'https://img.freepik.com/premium-vector/empty-face-icon-avatar-with-nimbus-vector-illustration_601298-13388.jpg';
+const stylesCard = { maxWidth: 345, marginBottom: 2 };
+const stylesTypography = { marginTop: 2 };
+
+const PostCard = ({ title, content, createdAt, authorLogin, tags }: PostCardProps) => {
   return (
-    <div>
-      <Card key={id} sx={stylesCard}>
+    <>
+      <Card sx={stylesCard}>
         <CardActionArea>
           <CardMedia
             component="img"
             height="300"
-            image={'https://img.freepik.com/premium-vector/empty-face-icon-avatar-with-nimbus-vector-illustration_601298-13388.jpg'}
+            image={imageUrl}
             alt={authorLogin}
           />
           <CardContent>
@@ -28,20 +38,25 @@ const PostCard = ({title, content, createdAt, authorLogin, tags, id }: PostCardP
             <Typography variant="body2" color="text.secondary">
               {content}
             </Typography>
-            <Typography variant="caption" component="div" sx={{marginTop: 2}} color="text.secondary">
+            <Typography variant="caption" component="div" sx={stylesTypography} color="text.secondary">
               {createdAt}
             </Typography><br />
             <Typography variant="caption" color="text.secondary">
               Автор: {authorLogin}
             </Typography><br />
             <Typography variant="caption" color="text.secondary">
-              {tags.join(', ')}
+            {tags.map((tag, index) => (
+              <span key={index}>
+                {tag.name}
+              </span>
+            ))}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
-    </div>
+    </>
   );
 };
 
 export default PostCard;
+

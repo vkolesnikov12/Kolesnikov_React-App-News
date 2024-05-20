@@ -10,7 +10,7 @@ const stackStyles = {
   width: '100%'
 };
 
-const FilledAlerts = ({error, severity} :FilledAlertProps) =>  {
+const FilledAlerts = ({ error, severity }: FilledAlertProps) =>  {
   return (
     <Stack sx={stackStyles} spacing={2}>
       <Alert variant="filled" severity={severity}>
