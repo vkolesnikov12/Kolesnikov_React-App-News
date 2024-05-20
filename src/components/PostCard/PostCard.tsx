@@ -1,7 +1,6 @@
-import React from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
 
-interface Props {
+interface PostCardProps {
   id?: number,
   title: string;
   content: string;
@@ -9,10 +8,12 @@ interface Props {
   authorLogin: string;
   tags: string[];
 }
-const PostCard: React.FC<Props> = ({title, content, createdAt, authorLogin, tags, id }) => {
+const stylesCard = { maxWidth: 345, marginBottom: 2 };
+
+const PostCard = ({title, content, createdAt, authorLogin, tags, id }: PostCardProps) => {
   return (
     <div>
-      <Card key={id} sx={{ maxWidth: 345, marginBottom: 2 }}>
+      <Card key={id} sx={stylesCard}>
         <CardActionArea>
           <CardMedia
             component="img"
