@@ -41,4 +41,3 @@ export interface NewsFailedAction {
 };
 
 export type PostAction = NewsRequestedAction | NewsReceivedAction | NewsFailedAction;
-
