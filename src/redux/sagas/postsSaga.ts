@@ -11,10 +11,10 @@ function* workSagaPosts() {
     const { data } = yield call(postsData);
     yield put(postsReceived(data));
   } catch (error: unknown) {
-      const currentError = error instanceof AxiosError
+    const currentError = error instanceof AxiosError
       ? error.message
       : DEFAULT_MESSAGE;
-      yield put(postsFailed(currentError));
+    yield put(postsFailed(currentError));
   };
 };
 

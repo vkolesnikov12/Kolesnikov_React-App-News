@@ -9,14 +9,24 @@ const initialState: InitialState = {
 
 const postReducer = (state = initialState, action: PostAction) => {
   switch (action.type) {
-    case POSTS_REQUESTED:
-      return {...state, isLoading: true, error: null};
-    case POSTS_RECEIVED:
-      return {...state, isLoading: false, posts: action.payload, error: null};
-    case POSTS_FAILED:
-      return {...state, isLoading: false, posts: [], error: action.error};
-    default: 
-      return state;
+  case POSTS_REQUESTED:
+    return { ...state, isLoading: true, error: null };
+  case POSTS_RECEIVED:
+    return { 
+      ...state, 
+      isLoading: false, 
+      posts: action.payload, 
+      error: null 
+    };
+  case POSTS_FAILED:
+    return { 
+      ...state, 
+      isLoading: false, 
+      posts: [], 
+      error: action.error 
+    };
+  default: 
+    return state;
   };
 };
 

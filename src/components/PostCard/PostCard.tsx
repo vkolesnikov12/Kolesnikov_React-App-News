@@ -6,9 +6,10 @@ import {
   CardActionArea 
 } from '@mui/material';
 
-import styles from './postCard.module.css';
-
+import avatarUrl from '../../public/images/avatar.avif';
 import { Tag } from '../../types';
+
+import styles from './postCard.module.css';
 
 interface PostCardProps {
   title: string;
@@ -18,15 +19,13 @@ interface PostCardProps {
   tags: Tag[];
 };
 
-const imageUrl = 'https://img.freepik.com/premium-vector/empty-face-icon-avatar-with-nimbus-vector-illustration_601298-13388.jpg';
-
 const PostCard = ({ 
   title, 
   content, 
   createdAt, 
-  authorLogin, 
-  tags 
-  }: PostCardProps) => {
+  authorLogin,
+  tags,
+}: PostCardProps) => {
   return (
     <>
       <Card className={styles.card}>
@@ -34,7 +33,7 @@ const PostCard = ({
           <CardMedia
             component="img"
             height="300"
-            image={imageUrl}
+            image={avatarUrl}
             alt={authorLogin}
           />
           <CardContent>
@@ -47,18 +46,20 @@ const PostCard = ({
             <Typography 
               variant="caption" 
               component="div" 
-              className={styles.typography} color="text.secondary">
+              className={styles.typography} 
+              color="text.secondary"
+            >
               {createdAt}
             </Typography><br />
             <Typography variant="caption" color="text.secondary">
               Автор: {authorLogin}
             </Typography><br />
             <Typography variant="caption" color="text.secondary">
-            {tags.map((tag, id) => (
-              <span key={id}>
-                {tag.name}
-              </span>
-            ))}
+              {tags.map((tag, id) => (
+                <span key={id}>
+                  {tag.name}
+                </span>
+              ))}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -68,4 +69,3 @@ const PostCard = ({
 };
 
 export default PostCard;
-
