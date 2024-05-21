@@ -12,8 +12,8 @@ const MainPage = () => {
   const posts = useAppSelector((state) => state.posts.posts);
   const isLoading = useAppSelector((state) => state.posts.isLoading);
   const error = useAppSelector((state) => state.posts.error);
-  const isError = error !== null && error !== undefined;
-  const isEmpty = posts.length === 0 && !isLoading && !isError;
+  const hasError = error !== null && error !== undefined;
+  const isEmpty = posts.length === 0 && !isLoading && !hasError;
   
   useEffect(() => {
     dispatch(postsRequested());
@@ -23,9 +23,9 @@ const MainPage = () => {
 
   return (
     <>
-    {isError && (<FilledAlerts error={error} severity={ERROR_SEVERITY} />)}
+    {hasError && (<FilledAlerts error={error} severity={ERROR_SEVERITY} />)}
     {isEmpty && <FilledAlerts error={NO_POSTS_MESSAGE} severity={INFO_SEVERITY} />}
-    {!isError && posts.map((post) => (
+    {!hasError && posts.map((post) => (
       <PostCard 
         key={post.id}
         title={post.title}

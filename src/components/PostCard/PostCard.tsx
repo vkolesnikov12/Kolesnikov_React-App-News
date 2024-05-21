@@ -6,6 +6,8 @@ import {
   CardActionArea 
 } from '@mui/material';
 
+import styles from './postCard.module.css';
+
 import { Tag } from '../../types';
 
 interface PostCardProps {
@@ -17,13 +19,17 @@ interface PostCardProps {
 };
 
 const imageUrl = 'https://img.freepik.com/premium-vector/empty-face-icon-avatar-with-nimbus-vector-illustration_601298-13388.jpg';
-const stylesCard = { maxWidth: 345, marginBottom: 2 };
-const stylesTypography = { marginTop: 2 };
 
-const PostCard = ({ title, content, createdAt, authorLogin, tags }: PostCardProps) => {
+const PostCard = ({ 
+  title, 
+  content, 
+  createdAt, 
+  authorLogin, 
+  tags 
+  }: PostCardProps) => {
   return (
     <>
-      <Card sx={stylesCard}>
+      <Card className={styles.card}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -38,15 +44,18 @@ const PostCard = ({ title, content, createdAt, authorLogin, tags }: PostCardProp
             <Typography variant="body2" color="text.secondary">
               {content}
             </Typography>
-            <Typography variant="caption" component="div" sx={stylesTypography} color="text.secondary">
+            <Typography 
+              variant="caption" 
+              component="div" 
+              className={styles.typography} color="text.secondary">
               {createdAt}
             </Typography><br />
             <Typography variant="caption" color="text.secondary">
               Автор: {authorLogin}
             </Typography><br />
             <Typography variant="caption" color="text.secondary">
-            {tags.map((tag, index) => (
-              <span key={index}>
+            {tags.map((tag, id) => (
+              <span key={id}>
                 {tag.name}
               </span>
             ))}

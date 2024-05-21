@@ -28,5 +28,5 @@ export interface InitialState {
 export interface PostAction {
   type: string;
   payload?: Post[];
-  error?: string | null;
+  error?: string;
 }

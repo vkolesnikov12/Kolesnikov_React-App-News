@@ -1,11 +1,11 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-const stylesLoading = { display: 'flex' };
+import styles from './loading.module.css';
 
 const Loading = () => {
   return (
-    <Box sx={stylesLoading}>
+    <Box className={styles.box}>
       <CircularProgress />
     </Box>
   );

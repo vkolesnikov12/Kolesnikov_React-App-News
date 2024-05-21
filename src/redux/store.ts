@@ -18,5 +18,5 @@ export default store;
 
 export type AppDispatch = typeof store.dispatch;
 export type AppStore = typeof store;
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppDispatch = useDispatch;
 export type RootState = ReturnType<AppStore['getState']>;
