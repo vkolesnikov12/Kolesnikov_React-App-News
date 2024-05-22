@@ -1,10 +1,9 @@
-import { legacy_createStore as createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { useDispatch } from 'react-redux';
+import { legacy_createStore as createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import rootReducer from './reducers/rootReducer';
-import rootSaga from './sagas/rootSagas';
+import rootReducer from "./reducers/rootReducer";
+import rootSaga from "./sagas/rootSagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -18,5 +17,4 @@ export default store;
 
 export type AppDispatch = typeof store.dispatch;
 export type AppStore = typeof store;
-export const useAppDispatch = useDispatch;
-export type RootState = ReturnType<AppStore['getState']>;
+export type RootState = ReturnType<AppStore["getState"]>;
