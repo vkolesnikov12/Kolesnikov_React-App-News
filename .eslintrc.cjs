@@ -14,5 +14,23 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "react-hooks/exhaustive-deps": "off",
+    "indent": ["error", 2], 
+    "object-curly-spacing": ["error", "always"], 
+    "array-bracket-spacing": ["error", "never"],
+    "semi": ["error"],
+    "quotes": ["error", "single"],
+    "no-extra-semi": "off",
+    "no-console": "off",
+    "no-use-before-define": ["error", {
+      "functions": false,
+      "classes": true,
+      "variables": false,
+      "allowNamedExports": false
+  }],
+  "radix": ["error", "as-needed"],
+  "no-param-reassign": ["off"],
+  "no-shadow": ["error", { "ignoreOnInitialization": false }],
+  "prefer-destructuring": ["error", {"object": true, "array": false}]
   },
 }
