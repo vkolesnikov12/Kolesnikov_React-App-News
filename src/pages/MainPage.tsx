@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import PostCard from '../components/PostCard/PostCard';
 import Loading from '../components/Loading/Loading';
-import {  postsRequested } from '../redux/actions/postsActions';
+import { postsRequested } from '../redux/actions/postsActions';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import FilledAlerts from '../components/FilledAlert/FilledAlert';
 import { ERROR_SEVERITY, INFO_SEVERITY, NO_POSTS_MESSAGE } from '../redux/constants/constants';
