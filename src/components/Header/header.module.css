@@ -1,0 +1,9 @@
+.button {
+  margin-right: 50px;
+}
+.box {
+  flex-grow: 1;
+}
+.typography {
+  flex-grow: 1;
+}

@@ -1,6 +1,8 @@
 .card {
   max-width: 345px;
   margin-bottom: 16px;
+  margin-top: 30px;
+  border: 1px solid grey;
 }
 
 .typography {
