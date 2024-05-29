@@ -33,7 +33,9 @@ export interface PostAction {
 export interface ModalAction {
   type: string;
   isOpenModal: boolean;
+  payload?: string;
 }
 export interface InitialStateModal {
   isOpenModal: boolean;
+  modalType: string;
 }
