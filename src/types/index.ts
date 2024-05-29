@@ -30,6 +30,10 @@ export interface PostAction {
   payload?: Post[];
   error?: string;
 }
+export interface FormAction {
+  type: string;
+  payload: any;
+}
 export interface ModalAction {
   type: string;
   isOpenModal: boolean;

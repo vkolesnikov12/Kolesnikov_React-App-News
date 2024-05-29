@@ -1,11 +1,14 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import styles from './authForm.module.css';
+import { setFormData } from '../../redux/actions/formActions';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
+  const formUserData = useAppSelector(state => state.form.data);
+  const dispatch = useAppDispatch();
   const modalTypeRegister = modalType === 'register';
 
   const handleSubmit = (e) => {
@@ -15,8 +18,9 @@ const AuthForm = () => {
       email: e.target[2].value,
       password: e.target[4].value
     };
-    console.log(formData);
+    dispatch(setFormData(formData));
   };
+  console.log(formUserData);
   
   return (
     <Box
