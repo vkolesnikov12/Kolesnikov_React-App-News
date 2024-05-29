@@ -1,14 +1,14 @@
 export interface Tag {
   id: number;
   name: string;
-};
+}
 
 export interface Author {
   id: number;
   login: string;
   avatarUrl: string | null;
   createdAt: string;
-};
+}
 
 export interface Post {
   id: number;
@@ -17,16 +17,23 @@ export interface Post {
   createdAt: string;
   tags: Tag[];
   author: Author;
-};
+}
 
 export interface InitialState {
-  posts: Post[],
-  isLoading: boolean,
-  error: null | string,
-};
+  posts: Post[];
+  isLoading: boolean;
+  error: null | string;
+}
 
 export interface PostAction {
   type: string;
   payload?: Post[];
   error?: string;
+}
+export interface ModalAction {
+  type: string;
+  isOpenModal: boolean;
+}
+export interface InitialStateModal {
+  isOpenModal: boolean;
 }
