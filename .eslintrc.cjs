@@ -14,6 +14,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
     "react-hooks/exhaustive-deps": "off",
     "indent": ["error", 2], 
     "object-curly-spacing": ["error", "always"], 

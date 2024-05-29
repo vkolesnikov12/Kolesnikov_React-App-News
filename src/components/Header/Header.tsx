@@ -1,11 +1,11 @@
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
-import { useAppDispatch } from "../../hooks";
-import { openModal, setModalType } from "../../redux/actions/modalActions";
+import { useAppDispatch } from '../../hooks';
+import { openModal, setModalType } from '../../redux/actions/modalActions';
 
 import styles from './header.module.css';
 
@@ -14,7 +14,7 @@ const Header = () => {
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
     dispatch(openModal());
-  }
+  };
   
   return (
     <Box className={styles.box}>

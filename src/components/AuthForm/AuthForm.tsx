@@ -1,52 +1,54 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { useAppSelector } from "../../hooks";
+import { Box, Button, TextField, Typography } from '@mui/material';
 
-const AuthForm = () => {
-  const modalType = useAppSelector(state => state.modal.modalType)
-  console.log(modalType);
+import { useAppSelector } from '../../hooks';
+
+import styles from './authForm.module.css';
+
+const AuthForm = () => {  
+  const modalType = useAppSelector(state => state.modal.modalType);
+  const modalTypeRegister = modalType === 'register';
+  
   return (
     <Box
       component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        mt: 4
-      }}
+      className={styles.box}
     >
       <Typography variant="h5" component="h2" gutterBottom>
-        Регистрация
+        {modalTypeRegister ? 'Регистрация' : 'Авторизация'}
       </Typography>
+      {modalTypeRegister &&
+          <TextField
+            className={styles.textField}
+            label="Login"
+            variant="outlined"
+            name="login"
+            required
+          />
+      } 
       <TextField
-        label="Login"
-        variant="outlined"
-        name="login"
-        required
-      />
-      <TextField
+        className={styles.textField}
         label="Email"
         variant="outlined"
         name="email"
         required
       />
       <TextField
+        className={styles.textField}
         label="Password"
         variant="outlined"
         type="password"
         name="password"
         required
-      />
+      />      
       <Button
         type="submit"
         variant="contained"
         color="primary"
-        sx={{ mt: 2 }}
+        className={styles.button}
       >
-        Зарегистрироваться
+        {modalTypeRegister ? 'Зарегистрироваться' : 'Авторизоваться'}
       </Button>
     </Box>
   );
 };
 export default AuthForm;
-//
