@@ -7,11 +7,22 @@ import styles from './authForm.module.css';
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
   const modalTypeRegister = modalType === 'register';
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      login: e.target[0].value,
+      email: e.target[2].value,
+      password: e.target[4].value
+    };
+    console.log(formData);
+  };
   
   return (
     <Box
       component="form"
       className={styles.box}
+      onSubmit={handleSubmit}
     >
       <Typography variant="h5" component="h2" gutterBottom>
         {modalTypeRegister ? 'Регистрация' : 'Авторизация'}
@@ -30,6 +41,7 @@ const AuthForm = () => {
         label="Email"
         variant="outlined"
         name="email"
+        type='email'
         required
       />
       <TextField
