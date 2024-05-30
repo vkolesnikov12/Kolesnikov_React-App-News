@@ -19,6 +19,12 @@ export interface Post {
   author: Author;
 }
 
+export interface FormData {
+  login: string;
+  email: string;
+  password: string;
+}
+
 export interface InitialState {
   posts: Post[];
   isLoading: boolean;
@@ -32,7 +38,7 @@ export interface PostAction {
 }
 export interface FormAction {
   type: string;
-  payload: any;
+  payload: FormData;
 }
 export interface ModalAction {
   type: string;
