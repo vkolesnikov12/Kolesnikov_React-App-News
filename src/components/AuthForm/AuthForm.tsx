@@ -13,15 +13,18 @@ const AuthForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      login: e.target[0].value,
-      email: e.target[2].value,
-      password: e.target[4].value
-    };
+    const formData = {};
+    const formElements = e.target.elements;
+
+    for (const element of formElements) {
+      if (element.name) {
+        formData[element.name] = element.value;
+      }
+    }
     dispatch(setFormData(formData));
   };
   console.log(formUserData);
-  
+
   return (
     <Box
       component="form"
@@ -68,3 +71,6 @@ const AuthForm = () => {
   );
 };
 export default AuthForm;
+
+// dispatch(setFormData(formData));
+// };

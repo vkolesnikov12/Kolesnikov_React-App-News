@@ -6,6 +6,7 @@ import { closeModal } from '../../redux/actions/modalActions';
 import AuthForm from '../AuthForm/AuthForm';
 
 import styles from './modal.module.css';
+import FilledAlerts from '../FilledAlert/FilledAlert';
 
 const ModalComponent = () => {
   const isModalOpen = useAppSelector(state => state.modal.isOpenModal);
@@ -20,6 +21,7 @@ const ModalComponent = () => {
         aria-describedby="modal-modal-description"
       >
         <Box className={styles.modal}>
+          <FilledAlerts error={'error'} severity={'info'}/>
           <AuthForm/>
         </Box>
       </Modal>

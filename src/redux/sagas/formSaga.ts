@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { AxiosError } from 'axios';
 
 import { SET_FORM_DATA } from '../constants/actionTypes';
@@ -8,8 +8,10 @@ import { DEFAULT_MESSAGE } from '../constants/constants';
 import { closeModal } from '../actions/modalActions';
 
 function* workerFormSaga({ payload }) {
+  const mySelect = yield select(state => state.modal.modalType );
+  const auth = mySelect === 'register' ? '/auth/register' : '/auth/login';
   try {
-    const res = yield call(formData, payload);
+    const res = yield call(formData, payload, auth);
     if (res.status === 200) {
       yield put(setFormDataSuccess(res.data));
     } else {
@@ -22,8 +24,7 @@ function* workerFormSaga({ payload }) {
       : DEFAULT_MESSAGE;
     yield put(setFormDataFailed(currentError));
     console.log(currentError);
-  }
-  
+  } 
 }
 
 function* watchFormSaga() {
