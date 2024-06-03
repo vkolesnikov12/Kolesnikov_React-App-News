@@ -39,6 +39,7 @@ export interface PostAction {
 export interface FormAction {
   type: string;
   payload: FormData;
+  error?: string
 }
 export interface ModalAction {
   type: string;

@@ -2,7 +2,8 @@ import { FormAction } from '../../types';
 import { SET_FORM_DATA, SET_FORM_DATA_FAILED, SET_FORM_DATA_SUCCESS } from '../constants/actionTypes';
 
 const initialState = {
-  data: []
+  data: [],
+  error: null
 };
 
 const formReducer = (state = initialState, action: FormAction) => {
@@ -12,7 +13,7 @@ const formReducer = (state = initialState, action: FormAction) => {
   case SET_FORM_DATA_SUCCESS: 
     return { ...state, data: action.payload, error: null };
   case SET_FORM_DATA_FAILED:
-    return { ...state, error: action.payload };
+    return { ...state, data: [], error: action.error };
   }
   return state;
 };

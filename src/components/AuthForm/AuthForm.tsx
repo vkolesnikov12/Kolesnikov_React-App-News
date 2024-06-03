@@ -1,13 +1,14 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setFormData } from '../../redux/actions/formActions';
+import FilledAlerts from '../FilledAlert/FilledAlert';
 
 import styles from './authForm.module.css';
-import { setFormData } from '../../redux/actions/formActions';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
-  const formUserData = useAppSelector(state => state.form.data);
+  const hasError = useAppSelector(state => state.form.error);
   const dispatch = useAppDispatch();
   const modalTypeRegister = modalType === 'register';
 
@@ -23,7 +24,6 @@ const AuthForm = () => {
     }
     dispatch(setFormData(formData));
   };
-  console.log(formUserData);
 
   return (
     <Box
@@ -31,6 +31,7 @@ const AuthForm = () => {
       className={styles.box}
       onSubmit={handleSubmit}
     >
+      {hasError && <FilledAlerts error={hasError} severity='error'/>}
       <Typography variant="h5" component="h2" gutterBottom>
         {modalTypeRegister ? 'Регистрация' : 'Авторизация'}
       </Typography>
@@ -71,6 +72,3 @@ const AuthForm = () => {
   );
 };
 export default AuthForm;
-
-// dispatch(setFormData(formData));
-// };

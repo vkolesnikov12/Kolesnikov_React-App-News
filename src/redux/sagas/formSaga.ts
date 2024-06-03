@@ -6,24 +6,24 @@ import { setFormDataFailed, setFormDataSuccess } from '../actions/formActions';
 import { formData } from '../api/form';
 import { DEFAULT_MESSAGE } from '../constants/constants';
 import { closeModal } from '../actions/modalActions';
+import { FormAction } from '../../types';
 
-function* workerFormSaga({ payload }) {
+function* workerFormSaga({ payload }: FormAction) {
   const mySelect = yield select(state => state.modal.modalType );
   const auth = mySelect === 'register' ? '/auth/register' : '/auth/login';
   try {
     const res = yield call(formData, payload, auth);
-    if (res.status === 200) {
-      yield put(setFormDataSuccess(res.data));
-    } else {
-      yield put(setFormDataFailed(res.data));
-    }
+    yield put(setFormDataSuccess(res.data));
     yield put(closeModal());
+    const { token } = res.data;
+    if(token) {
+      localStorage.setItem('token', token);
+    }
   } catch (err: unknown) {
     const currentError  = err instanceof AxiosError 
       ? err.response.data.message
       : DEFAULT_MESSAGE;
     yield put(setFormDataFailed(currentError));
-    console.log(currentError);
   } 
 }
 

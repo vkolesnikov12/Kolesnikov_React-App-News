@@ -13,5 +13,5 @@ export const setFormDataSuccess = (data: FormData) => ({
 
 export const setFormDataFailed = (error: string) => ({
   type: SET_FORM_DATA_FAILED,
-  payload: error
+  error
 });
