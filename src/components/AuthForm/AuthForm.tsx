@@ -23,6 +23,7 @@ const AuthForm = () => {
       }
     }
     dispatch(setFormData(formData));
+
   };
 
   return (

@@ -7,6 +7,7 @@ import { formData } from '../api/form';
 import { DEFAULT_MESSAGE } from '../constants/constants';
 import { closeModal } from '../actions/modalActions';
 import { FormAction } from '../../types';
+import { loginFailed, loginSuccess } from '../actions/loginActions';
 
 function* workerFormSaga({ payload }: FormAction) {
   const mySelect = yield select(state => state.modal.modalType );
@@ -15,15 +16,17 @@ function* workerFormSaga({ payload }: FormAction) {
     const res = yield call(formData, payload, auth);
     yield put(setFormDataSuccess(res.data));
     yield put(closeModal());
-    const { token } = res.data;
+    const { token, user } = res.data;
     if(token) {
       localStorage.setItem('token', token);
+      yield put(loginSuccess(user));
     }
   } catch (err: unknown) {
     const currentError  = err instanceof AxiosError 
       ? err.response.data.message
       : DEFAULT_MESSAGE;
     yield put(setFormDataFailed(currentError));
+    yield put(loginFailed());
   } 
 }
 
