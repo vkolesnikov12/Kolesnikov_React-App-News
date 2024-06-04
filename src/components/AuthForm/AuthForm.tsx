@@ -5,10 +5,12 @@ import { setFormData } from '../../redux/actions/formActions';
 import FilledAlerts from '../FilledAlert/FilledAlert';
 
 import styles from './authForm.module.css';
+import { loginSuccess } from '../../redux/actions/loginActions';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
   const hasError = useAppSelector(state => state.form.error);
+  const user = useAppSelector(state => state.login.user);
   const dispatch = useAppDispatch();
   const modalTypeRegister = modalType === 'register';
 
@@ -23,7 +25,10 @@ const AuthForm = () => {
       }
     }
     dispatch(setFormData(formData));
-
+    if(!modalTypeRegister) {
+      dispatch(loginSuccess(user));
+      console.log(modalTypeRegister);
+    }
   };
 
   return (

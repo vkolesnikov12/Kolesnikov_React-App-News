@@ -26,7 +26,7 @@ function* workerFormSaga({ payload }: FormAction) {
       ? err.response.data.message
       : DEFAULT_MESSAGE;
     yield put(setFormDataFailed(currentError));
-    yield put(loginFailed());
+    yield put(loginFailed(currentError));
   } 
 }
 

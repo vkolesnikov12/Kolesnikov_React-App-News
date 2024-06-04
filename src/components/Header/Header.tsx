@@ -21,9 +21,10 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout(user));
     localStorage.removeItem('token');
   };
+  console.log(user);
   return (
     <Box className={styles.box}>
       <AppBar position="static">
