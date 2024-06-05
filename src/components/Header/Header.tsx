@@ -13,7 +13,6 @@ import { logout } from '../../redux/actions/loginActions';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const isAuth = useAppSelector(state => state.login?.isAuth);
   const user = useAppSelector(state => state.login?.user);
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
@@ -32,7 +31,7 @@ const Header = () => {
           <Typography variant="h6" component="div" className={styles.typography}>
             News
           </Typography>
-          {isAuth ? (
+          {user ? (
             <>
               <ImageAvatar />
               <Button onClick={handleLogout}  className={styles.button} color="inherit">

@@ -1,11 +1,12 @@
+import { InitialStateLogin, LoginAction } from '../../types';
 import { LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT } from '../constants/actionTypes';
 
-const initialState = {
+const initialState: InitialStateLogin = {
   isAuth: false,
   user: null
 };
 
-const loginReducer = (state = initialState, action) => {
+const loginReducer = (state = initialState, action: LoginAction) => {
   switch (action.type) {
   case LOGIN_SUCCESS: 
     return { ...state, isAuth: true, user: action.payload };

@@ -41,6 +41,11 @@ export interface FormAction {
   payload: FormData;
   error?: string
 }
+export interface LoginAction {
+  type: string;
+  payload: string;
+  error: string  
+}
 export interface ModalAction {
   type: string;
   isOpenModal: boolean;
@@ -49,4 +54,8 @@ export interface ModalAction {
 export interface InitialStateModal {
   isOpenModal: boolean;
   modalType: string;
+}
+export interface InitialStateLogin {
+  isAuth: boolean,
+  user: null | Author
 }

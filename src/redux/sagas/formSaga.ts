@@ -8,8 +8,9 @@ import { DEFAULT_MESSAGE } from '../constants/constants';
 import { closeModal } from '../actions/modalActions';
 import { FormAction } from '../../types';
 import { loginFailed, loginSuccess } from '../actions/loginActions';
+import { SagaIterator } from 'redux-saga';
 
-function* workerFormSaga({ payload }: FormAction) {
+function* workerFormSaga({ payload }: FormAction): SagaIterator {
   const mySelect = yield select(state => state.modal.modalType );
   const auth = mySelect === 'register' ? '/auth/register' : '/auth/login';
   try {
@@ -19,11 +20,13 @@ function* workerFormSaga({ payload }: FormAction) {
     const { token, user } = res.data;
     if(token) {
       localStorage.setItem('token', token);
+    }
+    if(mySelect === 'login') {
       yield put(loginSuccess(user));
     }
   } catch (err: unknown) {
     const currentError  = err instanceof AxiosError 
-      ? err.response.data.message
+      ? err?.response?.data.message
       : DEFAULT_MESSAGE;
     yield put(setFormDataFailed(currentError));
     yield put(loginFailed(currentError));
