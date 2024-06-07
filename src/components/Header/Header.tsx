@@ -6,14 +6,14 @@ import Button from '@mui/material/Button';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { openModal, setModalType } from '../../redux/actions/modalActions';
-
-import styles from './header.module.css';
 import ImageAvatar from '../Avatar/ImageAvatar';
 import { logout } from '../../redux/actions/loginActions';
 
+import styles from './header.module.css';
+
 const Header = () => {
   const dispatch = useAppDispatch();
-  const user = useAppSelector(state => state.login?.user);
+  const user = useAppSelector(state => state.login.user);
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
     dispatch(openModal());
@@ -23,7 +23,7 @@ const Header = () => {
     dispatch(logout(user));
     localStorage.removeItem('token');
   };
-  console.log(user);
+  
   return (
     <Box className={styles.box}>
       <AppBar position="static">

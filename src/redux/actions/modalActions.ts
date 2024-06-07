@@ -15,4 +15,5 @@ export const closeModal = () => ({
 export const setModalType = (modalType: string) => ({
   type: SET_MODAL_TYPE,
   payload: modalType,
+  
 });

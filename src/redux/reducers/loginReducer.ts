@@ -1,5 +1,5 @@
 import { InitialStateLogin, LoginAction } from '../../types';
-import { LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT } from '../constants/actionTypes';
+import { INITIALIZE_AUTH, LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT } from '../constants/actionTypes';
 
 const initialState: InitialStateLogin = {
   isAuth: false,
@@ -12,6 +12,8 @@ const loginReducer = (state = initialState, action: LoginAction) => {
     return { ...state, isAuth: true, user: action.payload };
   case LOGIN_FAILED: 
     return { ...state, isAuth: false };
+  case INITIALIZE_AUTH: 
+    return { ...state, isAuth: true };
   case LOGOUT:
     return { ...state, isAuth: false, user: null };
   }

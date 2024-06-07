@@ -44,7 +44,7 @@ export interface FormAction {
 export interface LoginAction {
   type: string;
   payload: string;
-  error: string  
+  error: string;
 }
 export interface ModalAction {
   type: string;

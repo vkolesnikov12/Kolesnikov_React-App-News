@@ -36,13 +36,13 @@ const AuthForm = () => {
         {modalTypeRegister ? 'Регистрация' : 'Авторизация'}
       </Typography>
       {modalTypeRegister &&
-          <TextField
-            className={styles.textField}
-            label="Login"
-            variant="outlined"
-            name="login"
-            required
-          />
+        <TextField
+          className={styles.textField}
+          label="Login"
+          variant="outlined"
+          name="login"
+          required
+        />
       } 
       <TextField
         className={styles.textField}

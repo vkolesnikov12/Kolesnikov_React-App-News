@@ -10,3 +10,4 @@ export const SET_FORM_DATA_FAILED = 'SET_FORM_DATA_FAILED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT = 'LOGOUT';
+export const INITIALIZE_AUTH = 'INITIALIZE_AUTH';
