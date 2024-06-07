@@ -1,4 +1,4 @@
-import { Author, FormData } from '../../types';
+import { FormData } from '../../types';
 import { CLEAR_FORM_DATA, INITIALIZE_AUTH, LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT } from '../constants/actionTypes';
 
 export const loginRequest = (user: FormData) => ({
@@ -24,7 +24,7 @@ export const clearFormData = () => ({
   type: CLEAR_FORM_DATA,
 });
 
-export const logout= (user: Author) => ({
+export const logout= (user: FormData) => ({
   type: LOGOUT,
   payload: user
 });

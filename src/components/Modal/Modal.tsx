@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
+import { clearFormData } from '../../redux/actions/loginActions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { closeModal } from '../../redux/actions/modalActions';
 import AuthForm from '../AuthForm/AuthForm';
 
 import styles from './modal.module.css';
-import { clearFormData } from '../../redux/actions/formActions';
 
 const ModalComponent = () => {
   const isModalOpen = useAppSelector(state => state.modal.isOpenModal);

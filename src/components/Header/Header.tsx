@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { openModal, setModalType } from '../../redux/actions/modalActions';
@@ -10,14 +11,11 @@ import ImageAvatar from '../Avatar/ImageAvatar';
 import { clearFormData, initializeAuth, logout } from '../../redux/actions/loginActions';
 
 import styles from './header.module.css';
-import { useEffect } from 'react';
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.login.user);
   const isAuth = useAppSelector(state => state.login.isAuth);
-  console.log(isAuth);
-  console.log(user);
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
     dispatch(openModal());

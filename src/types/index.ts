@@ -43,7 +43,7 @@ export interface FormAction {
 }
 export interface LoginAction {
   type: string;
-  payload: Author | string;
+  payload: FormData | string;
 }
 export interface ModalAction {
   type: string;

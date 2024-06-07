@@ -1,11 +1,11 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
+import React from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import FilledAlerts from '../FilledAlert/FilledAlert';
+import { loginRequest } from '../../redux/actions/loginActions';
 
 import styles from './authForm.module.css';
-import React from 'react';
-import { loginRequest } from '../../redux/actions/loginActions';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
