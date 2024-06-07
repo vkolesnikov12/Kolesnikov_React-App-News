@@ -5,6 +5,7 @@ import { setFormData } from '../../redux/actions/formActions';
 import FilledAlerts from '../FilledAlert/FilledAlert';
 
 import styles from './authForm.module.css';
+import React from 'react';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
@@ -12,19 +13,18 @@ const AuthForm = () => {
   const dispatch = useAppDispatch();
   const modalTypeRegister = modalType === 'register';
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = {};
-    const formElements = e.target.elements;
+    const formData: { [key: string]: string } = {};
+    const formElements = (e.target as HTMLFormElement).elements as HTMLCollectionOf<HTMLInputElement>;
 
     for (const element of formElements) {
       if (element.name) {
-        formData[element.name] = element.value;
+        formData[element.name] = (element as HTMLInputElement).value;
       }
     }
     dispatch(setFormData(formData));
   };
-  
   return (
     <Box
       component="form"

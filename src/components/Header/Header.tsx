@@ -7,13 +7,15 @@ import Button from '@mui/material/Button';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { openModal, setModalType } from '../../redux/actions/modalActions';
 import ImageAvatar from '../Avatar/ImageAvatar';
-import { logout } from '../../redux/actions/loginActions';
+import { initializeAuth, logout } from '../../redux/actions/loginActions';
 
 import styles from './header.module.css';
+import { useEffect } from 'react';
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.login.user);
+  
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
     dispatch(openModal());
@@ -23,6 +25,10 @@ const Header = () => {
     dispatch(logout(user));
     localStorage.removeItem('token');
   };
+
+  useEffect(() => {
+    dispatch(initializeAuth());
+  }, []);
   
   return (
     <Box className={styles.box}>

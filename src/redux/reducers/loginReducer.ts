@@ -11,7 +11,7 @@ const loginReducer = (state = initialState, action: LoginAction) => {
   case LOGIN_SUCCESS: 
     return { ...state, isAuth: true, user: action.payload };
   case LOGIN_FAILED: 
-    return { ...state, isAuth: false };
+    return { ...state, isAuth: false, error: action.payload };
   case INITIALIZE_AUTH: 
     return { ...state, isAuth: true };
   case LOGOUT:

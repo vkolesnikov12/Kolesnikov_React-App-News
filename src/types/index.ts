@@ -20,9 +20,9 @@ export interface Post {
 }
 
 export interface FormData {
-  login: string;
-  email: string;
-  password: string;
+  login?: string;
+  email?: string;
+  password?: string;
 }
 
 export interface InitialState {
@@ -43,8 +43,7 @@ export interface FormAction {
 }
 export interface LoginAction {
   type: string;
-  payload: string;
-  error: string;
+  payload: Author | string;
 }
 export interface ModalAction {
   type: string;

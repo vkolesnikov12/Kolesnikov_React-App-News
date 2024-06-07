@@ -24,7 +24,7 @@ function* workerFormSaga({ payload }: FormAction): SagaIterator {
     yield put(loginSuccess(user));
   } catch (err: unknown) {
     const currentError  = err instanceof AxiosError 
-      ? err?.response.data.message
+      ? err.response?.data.message
       : DEFAULT_MESSAGE;
     yield put(setFormDataFailed(currentError));
     yield put(loginFailed(currentError));

@@ -6,16 +6,22 @@ import { closeModal } from '../../redux/actions/modalActions';
 import AuthForm from '../AuthForm/AuthForm';
 
 import styles from './modal.module.css';
+import { clearFormData } from '../../redux/actions/formActions';
 
 const ModalComponent = () => {
   const isModalOpen = useAppSelector(state => state.modal.isOpenModal);
   const dispatch = useAppDispatch();
+
+  const closeModalForm = () => {
+    dispatch(closeModal());
+    dispatch(clearFormData());
+  };
   
   return (
     <div>
       <Modal
         open={isModalOpen}
-        onClose={() => dispatch(closeModal())}
+        onClose={closeModalForm}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
