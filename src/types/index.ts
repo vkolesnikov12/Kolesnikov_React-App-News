@@ -55,6 +55,7 @@ export interface InitialStateModal {
   modalType: string;
 }
 export interface InitialStateLogin {
-  isAuth: boolean,
-  user: null | Author
+  isAuth: boolean;
+  user: null | Author;
+  error: null | string;
 }

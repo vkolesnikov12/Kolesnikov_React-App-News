@@ -1,15 +1,15 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setFormData } from '../../redux/actions/formActions';
 import FilledAlerts from '../FilledAlert/FilledAlert';
 
 import styles from './authForm.module.css';
 import React from 'react';
+import { loginRequest } from '../../redux/actions/loginActions';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
-  const hasError = useAppSelector(state => state.form.error);
+  const hasError = useAppSelector(state => state.login.error);
   const dispatch = useAppDispatch();
   const modalTypeRegister = modalType === 'register';
 
@@ -23,7 +23,7 @@ const AuthForm = () => {
         formData[element.name] = (element as HTMLInputElement).value;
       }
     }
-    dispatch(setFormData(formData));
+    dispatch(loginRequest(formData));
   };
   return (
     <Box

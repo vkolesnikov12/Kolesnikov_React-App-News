@@ -1,7 +1,12 @@
-import { Author } from '../../types';
-import { INITIALIZE_AUTH, LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT } from '../constants/actionTypes';
+import { Author, FormData } from '../../types';
+import { CLEAR_FORM_DATA, INITIALIZE_AUTH, LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT } from '../constants/actionTypes';
 
-export const loginSuccess = (user: Author) => ({
+export const loginRequest = (user: FormData) => ({
+  type: LOGIN_REQUEST,
+  payload: user
+});
+
+export const loginSuccess = (user: FormData) => ({
   type: LOGIN_SUCCESS,
   payload: user
 });
@@ -13,6 +18,10 @@ export const loginFailed = (error: string) => ({
 
 export const initializeAuth = () => ({
   type: INITIALIZE_AUTH,
+});
+
+export const clearFormData = () => ({
+  type: CLEAR_FORM_DATA,
 });
 
 export const logout= (user: Author) => ({

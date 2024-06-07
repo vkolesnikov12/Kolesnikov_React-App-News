@@ -20,8 +20,6 @@ function* workProfileSaga(): SagaIterator {
       localStorage.removeItem('token');
       yield put(loginFailed(currentError));
     }
-  } else {
-    yield put(loginFailed('No token'));
   }
 }
 

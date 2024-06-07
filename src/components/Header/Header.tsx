@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { openModal, setModalType } from '../../redux/actions/modalActions';
 import ImageAvatar from '../Avatar/ImageAvatar';
-import { initializeAuth, logout } from '../../redux/actions/loginActions';
+import { clearFormData, initializeAuth, logout } from '../../redux/actions/loginActions';
 
 import styles from './header.module.css';
 import { useEffect } from 'react';
@@ -15,7 +15,9 @@ import { useEffect } from 'react';
 const Header = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.login.user);
-  
+  const isAuth = useAppSelector(state => state.login.isAuth);
+  console.log(isAuth);
+  console.log(user);
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
     dispatch(openModal());
@@ -23,6 +25,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout(user));
+    dispatch(clearFormData());
     localStorage.removeItem('token');
   };
 
@@ -37,7 +40,7 @@ const Header = () => {
           <Typography variant="h6" component="div" className={styles.typography}>
             News
           </Typography>
-          {user ? (
+          {isAuth ? (
             <>
               <ImageAvatar />
               <Button onClick={handleLogout}  className={styles.button} color="inherit">
