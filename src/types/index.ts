@@ -6,8 +6,10 @@ export interface Tag {
 export interface Author {
   id: number;
   login: string;
+  email: string;
   avatarUrl: string | null;
   createdAt: string;
+  updatedAt: string;
 }
 
 export interface Post {
@@ -50,12 +52,19 @@ export interface ModalAction {
   isOpenModal: boolean;
   payload?: string;
 }
+
+export enum ModalType {
+  Unknown = 'unknown',
+  Register = 'register',
+  Login = 'login',
+}
 export interface InitialStateModal {
   isOpenModal: boolean;
-  modalType: string;
+  modalType: ModalType;
 }
-export interface InitialStateLogin {
+export interface AuthInitialState {
   isAuth: boolean;
+  isLoading: boolean;
   user: null | Author;
   error: null | string;
 }

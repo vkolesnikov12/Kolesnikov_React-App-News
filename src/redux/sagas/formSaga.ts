@@ -11,9 +11,9 @@ import { loginFailed, loginSuccess } from '../actions/loginActions';
 
 function* workerFormSaga({ payload }: FormAction): SagaIterator {
   const mySelect = yield select(state => state.modal.modalType );
-  const auth = mySelect === 'register' ? '/auth/register' : '/auth/login';
+  const path = mySelect === 'register' ? '/auth/register' : '/auth/login';
   try {
-    const res = yield call(formData, payload, auth);
+    const res = yield call(formData, payload, path);
     yield put(closeModal());
     const { token, user } = res.data;
     if(token) {

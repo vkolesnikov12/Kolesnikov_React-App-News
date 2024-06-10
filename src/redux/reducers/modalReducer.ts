@@ -1,4 +1,4 @@
-import { InitialStateModal, ModalAction } from '../../types';
+import { InitialStateModal, ModalAction, ModalType } from '../../types';
 import {
   CLOSE_MODAL,
   OPEN_MODAL,
@@ -7,7 +7,7 @@ import {
 
 const initialState: InitialStateModal = {
   isOpenModal: false,
-  modalType: 'unknown',
+  modalType: ModalType.Unknown,
 };
 const modalReducer = (state = initialState, action: ModalAction) => {
   switch (action.type) {

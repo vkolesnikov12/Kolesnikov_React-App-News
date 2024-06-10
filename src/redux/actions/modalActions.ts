@@ -1,8 +1,4 @@
-import {
-  CLOSE_MODAL,
-  OPEN_MODAL,
-  SET_MODAL_TYPE,
-} from '../constants/actionTypes';
+import { CLOSE_MODAL, OPEN_MODAL, SET_MODAL_TYPE } from '../constants/actionTypes';
 
 export const openModal = () => ({
   type: OPEN_MODAL,

@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { AxiosError } from 'axios';
 import { SagaIterator } from 'redux-saga';
 
-import { INITIALIZE_AUTH } from '../constants/actionTypes';
+import { VERIFY_USER } from '../constants/actionTypes';
 import { profileData } from '../api/profile';
 import { loginFailed, loginSuccess } from '../actions/loginActions';
 import { DEFAULT_MESSAGE } from '../constants/constants';
@@ -24,6 +24,6 @@ function* workProfileSaga(): SagaIterator {
 }
 
 function* watchProfileSaga() {
-  yield takeLatest(INITIALIZE_AUTH, workProfileSaga);
+  yield takeLatest(VERIFY_USER, workProfileSaga);
 }
 export default watchProfileSaga;

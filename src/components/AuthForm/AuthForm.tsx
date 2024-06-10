@@ -1,5 +1,10 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
-import React from 'react';
+import { 
+  Box, 
+  Button, 
+  TextField, 
+  Typography 
+} from '@mui/material';
+import { SyntheticEvent } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import FilledAlerts from '../FilledAlert/FilledAlert';
@@ -9,11 +14,10 @@ import styles from './authForm.module.css';
 
 const AuthForm = () => {  
   const modalType = useAppSelector(state => state.modal.modalType);
-  const hasError = useAppSelector(state => state.login.error);
+  const loginError = useAppSelector(state => state.login.error);
   const dispatch = useAppDispatch();
-  const modalTypeRegister = modalType === 'register';
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const isModalTypeRegister = modalType === 'register';
+  const handleSubmit = (e: SyntheticEvent): void => {
     e.preventDefault();
     const formData: { [key: string]: string } = {};
     const formElements = (e.target as HTMLFormElement).elements as HTMLCollectionOf<HTMLInputElement>;
@@ -31,11 +35,11 @@ const AuthForm = () => {
       className={styles.box}
       onSubmit={handleSubmit}
     >
-      {hasError && <FilledAlerts error={hasError} severity='error'/>}
+      {loginError && <FilledAlerts error={loginError} severity='error'/>}
       <Typography variant="h5" component="h2" gutterBottom>
-        {modalTypeRegister ? 'Регистрация' : 'Авторизация'}
+        {isModalTypeRegister ? 'Регистрация' : 'Авторизация'}
       </Typography>
-      {modalTypeRegister &&
+      {isModalTypeRegister &&
         <TextField
           className={styles.textField}
           label="Login"
@@ -66,7 +70,7 @@ const AuthForm = () => {
         color="primary"
         className={styles.button}
       >
-        {modalTypeRegister ? 'Зарегистрироваться' : 'Авторизоваться'}
+        {isModalTypeRegister ? 'Зарегистрироваться' : 'Авторизоваться'}
       </Button>
     </Box>
   );

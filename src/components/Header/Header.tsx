@@ -8,27 +8,28 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { openModal, setModalType } from '../../redux/actions/modalActions';
 import ImageAvatar from '../Avatar/ImageAvatar';
-import { clearFormData, initializeAuth, logout } from '../../redux/actions/loginActions';
+import { logout, verifyUser } from '../../redux/actions/loginActions';
 
 import styles from './header.module.css';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const user = useAppSelector(state => state.login.user);
   const isAuth = useAppSelector(state => state.login.isAuth);
+  const token = localStorage.getItem('token');
   const handleOpenModal = (type: string) => {
     dispatch(setModalType(type));
     dispatch(openModal());
   };
 
   const handleLogout = () => {
-    dispatch(logout(user));
-    dispatch(clearFormData());
+    dispatch(logout());
     localStorage.removeItem('token');
   };
 
   useEffect(() => {
-    dispatch(initializeAuth());
+    if(token) {
+      dispatch(verifyUser());
+    }
   }, []);
   
   return (

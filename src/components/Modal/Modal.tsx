@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-import { clearFormData } from '../../redux/actions/loginActions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { closeModal } from '../../redux/actions/modalActions';
 import AuthForm from '../AuthForm/AuthForm';
@@ -14,7 +13,6 @@ const ModalComponent = () => {
 
   const closeModalForm = () => {
     dispatch(closeModal());
-    dispatch(clearFormData());
   };
   
   return (
