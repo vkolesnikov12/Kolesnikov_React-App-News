@@ -17,17 +17,11 @@ const AuthForm = () => {
   const loginError = useAppSelector(state => state.login.error);
   const dispatch = useAppDispatch();
   const isModalTypeRegister = modalType === 'register';
-  const handleSubmit = (e: SyntheticEvent): void => {
-    e.preventDefault();
-    const formData: { [key: string]: string } = {};
-    const formElements = (e.target as HTMLFormElement).elements as HTMLCollectionOf<HTMLInputElement>;
-
-    for (const element of formElements) {
-      if (element.name) {
-        formData[element.name] = (element as HTMLInputElement).value;
-      }
-    }
-    dispatch(loginRequest(formData));
+  const handleSubmit = (event: SyntheticEvent): void => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const auth = Object.fromEntries(formData);
+    dispatch(loginRequest(auth));
   };
   return (
     <Box
