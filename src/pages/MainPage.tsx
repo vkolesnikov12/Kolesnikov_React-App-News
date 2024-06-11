@@ -9,9 +9,9 @@ import { ERROR_SEVERITY, INFO_SEVERITY, NO_POSTS_MESSAGE } from '../redux/consta
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
-  const posts = useAppSelector((state) => state.posts.posts);
-  const isLoading = useAppSelector((state) => state.posts.isLoading);
-  const error = useAppSelector((state) => state.posts.error);
+  const posts = useAppSelector((state) => state.posts?.posts || [] );
+  const isLoading = useAppSelector((state) => state.posts?.isLoading);
+  const error = useAppSelector((state) => state.posts?.error);
   const hasError = error !== null && error !== undefined;
   const isEmpty = posts.length === 0 && !hasError;
   
